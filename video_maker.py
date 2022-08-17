@@ -6,6 +6,7 @@ filename = 'cvideo1.mp4'
 #id = 0
 id = 'rtsp://admin:L2E03F0A@192.168.1.7:80/cam/realmonitor?channel=1&subtype=0&unicast=false&proto=Onvif'
 cap = cv2.VideoCapture(id)
+frame_per_second = 30
 
 # Check if camera opened successfully
 if (cap.isOpened() == False): 
@@ -22,7 +23,7 @@ frame_height = int(cap.get(4))
 video_cod = cv2.VideoWriter_fourcc(*'XVID')
 video_output= cv2.VideoWriter(filename,
                       video_cod,
-                      10,
+                      frame_per_second,
                       (frame_width,frame_height))
 
 while(True):
